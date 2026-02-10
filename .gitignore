@@ -34,10 +34,7 @@ uploads/
 *.png
 *.webp
 
-# Models
-models/*
-!models/breed_classifier.h5
-!models/class_indices.json
+
 
 
 # IDE
@@ -47,7 +44,7 @@ models/*
 *.swo
 *~
 
-# OS
+# OS junk
 .DS_Store
 Thumbs.db
 
