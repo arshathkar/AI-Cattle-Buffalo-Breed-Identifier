@@ -1,172 +1,246 @@
-# AI-Based Cattle & Buffalo Breed Identification System
+# 🐄 BovID
 
-A web application for identifying Indian cattle and buffalo breeds using AI image classification.
+### AI-Powered Cattle & Buffalo Breed Identification System
 
-## Features
+BovID is a deep learning-powered web application that identifies Indian cattle and buffalo breeds from images using Computer Vision and Transfer Learning. The system provides breed classification, confidence scoring, breed information, and non-bovine image rejection through an efficient AI pipeline.
 
-- 📷 **Image Upload**: Drag-and-drop or click to upload images
-- 🔍 **Breed Detection**: AI-powered breed identification
-- 📊 **Confidence Scores**: Shows prediction confidence and top alternatives
-- 💡 **Explainable AI**: Provides reasoning for breed predictions
-- 📱 **Responsive Design**: Works on desktop and mobile devices
+---
 
-## Installation
+## 📌 Overview
 
-### Prerequisites
+Accurate breed identification is essential for livestock management, breeding programs, productivity analysis, and breed conservation. Traditional methods rely on manual inspection and domain expertise, making the process time-consuming and inconsistent.
 
-- Python 3.8 or higher
-- pip (Python package manager)
+BovID automates breed identification using deep learning, enabling fast and reliable predictions from a single image.
 
-### Setup
+---
 
-1. **Clone or download this repository**
+## 🚀 Features
 
-2. **Install dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
+- Image-based cattle and buffalo breed identification
+- Deep learning-powered classification
+- Non-bovine image rejection
+- Automatic image quality validation
+- Confidence-based predictions
+- Breed information retrieval
+- Cross-breed information generation
+- Lightweight and scalable architecture
 
-3. **Run the application**:
-   ```bash
-   python app.py
-   ```
+---
 
-4. **Open your browser** and navigate to:
-   ```
-   http://localhost:5000
-   ```
+## 🧠 AI & Machine Learning
 
-## Using Your Own Model
+### Model Architecture
 
-### Option 1: Replace Demo Function
+- MobileNetV2 (Transfer Learning)
+- Convolutional Neural Network (CNN)
+- Fine-tuned on livestock breed datasets
 
-Edit `app.py` and replace the `predict_breed_demo()` function with your model:
+### Training Strategy
 
-```python
-def predict_breed(image):
-    # Load your model
-    model = load_model('models/your_model.h5')
-    
-    # Preprocess image
-    preprocessed = preprocess_image(image)
-    
-    # Get predictions
-    predictions = model.predict(preprocessed)
-    
-    # Process and return results
-    breed_names = ['Gir', 'Sahiwal', 'Murrah', ...]  # Your breed list
-    top_indices = np.argsort(predictions[0])[::-1][:5]
-    
-    results = []
-    for idx in top_indices:
-        results.append({
-            'breed': breed_names[idx],
-            'confidence': float(predictions[0][idx])
-        })
-    
-    return results
+#### Phase 1: Feature Extraction
+
+- Pre-trained MobileNetV2 backbone
+- Base layers frozen
+- Custom classification layers trained
+
+**Purpose:**
+- Preserve ImageNet features
+- Faster convergence
+- Reduced overfitting
+
+#### Phase 2: Fine-Tuning
+
+- Upper layers unfrozen
+- Low learning rate training
+- Breed-specific adaptation
+
+**Purpose:**
+- Learn horn structures
+- Learn hump patterns
+- Learn coat textures
+- Improve breed-level classification accuracy
+
+---
+
+## 📊 Data Augmentation
+
+To improve model generalization and reduce overfitting, the following augmentation techniques were applied:
+
+- Rotation
+- Translation
+- Zoom
+- Shear
+- Horizontal Flip
+- Brightness Adjustment
+
+---
+
+## 🔍 Prediction Workflow
+
+```text
+Image Upload
+      │
+      ▼
+Image Validation
+      │
+      ▼
+Image Preprocessing
+      │
+      ▼
+Bovine Verification
+      │
+      ▼
+Breed Classification
+      │
+      ▼
+Confidence Scoring
+      │
+      ▼
+Breed Information Lookup
+      │
+      ▼
+Final Prediction
 ```
 
-### Option 2: Train Your Own Model
+---
 
-1. **Prepare your dataset**:
-   - Organize images by breed in folders
-   - Ensure balanced dataset (recommended: 500+ images per breed)
-   - Include various angles: face, side body, horns, hump
+## 🛠 Technology Stack
 
-2. **Train a model**:
-   ```python
-   # Example training script
-   from tensorflow import keras
-   from tensorflow.keras import layers
-   
-   # Load and preprocess data
-   # Train model
-   # Save model
-   model.save('models/breed_classifier.h5')
-   ```
+### Frontend
+- HTML5
+- CSS3
+- JavaScript
 
-3. **Update `app.py`**:
-   - Uncomment model loading code
-   - Update `preprocess_image()` to match your model's input requirements
-   - Replace `predict_breed_demo()` with actual model inference
+### Backend
+- Flask
+- Python
 
-## Dataset Sources
+### AI / Machine Learning
+- TensorFlow
+- Keras
+- MobileNetV2
 
-You can use datasets from:
-- Government livestock databases
-- University research datasets
-- Field-collected images
-- Online repositories (Kaggle, etc.)
+### Image Processing
+- Pillow (PIL)
+- NumPy
 
-## Supported Breeds
+---
 
-Currently configured for:
-- **Cattle**: Gir, Sahiwal, Red Sindhi, Tharparkar, Kankrej
-- **Buffalo**: Murrah, Nili-Ravi, Jaffrabadi, Mehsana, Pandharpuri
+## 📂 Project Structure
 
-Add more breeds by updating `BREED_DATABASE` in `app.py`.
-
-## API Endpoints
-
-### POST `/predict`
-Upload an image and get breed prediction.
-
-**Request**:
-- `image`: Image file (JPG, PNG, WEBP, max 10MB)
-
-**Response**:
-```json
-{
-  "breed": "Gir",
-  "confidence": 0.85,
-  "top_predictions": [
-    {"breed": "Gir", "confidence": 0.85},
-    {"breed": "Sahiwal", "confidence": 0.10},
-    {"breed": "Kankrej", "confidence": 0.05}
-  ],
-  "explanation": "Long curved horns detected...",
-  "breed_info": {
-    "category": "Cattle",
-    "milk_yield": "2000-3000 liters/year",
-    "region": "Gujarat"
-  }
-}
+```text
+BovID
+│
+├── app.py
+├── train_model.py
+├── augment_other.py
+├── regen_class_indices.py
+│
+├── models/
+├── labels/
+│
+├── requirements.txt
+├── runtime.txt
+├── README.md
+└── index.html
 ```
 
-### GET `/health`
-Check API health status.
+---
 
-## Project Structure
+## ⚙ Installation
 
-```
-.
-├── app.py              # Flask backend API
-├── index.html          # Frontend web interface
-├── requirements.txt    # Python dependencies
-├── README.md          # This file
-└── uploads/           # Uploaded images (created automatically)
+### Clone the Repository
+
+```bash
+git clone https://github.com/<username>/BovID.git
+cd BovID
 ```
 
-## Development Notes
+### Create Virtual Environment
 
-- The current implementation uses a demo prediction function
-- Replace `predict_breed_demo()` with your trained model for production
-- Adjust `preprocess_image()` based on your model's input requirements
-- Update `BREED_DATABASE` with complete breed information
+```bash
+python -m venv venv
+```
 
-## Future Enhancements
+### Activate Environment
 
-- [ ] Multi-view image support (face + side + horns)
-- [ ] Offline mode with TensorFlow.js
-- [ ] Multi-language support
-- [ ] Mobile app version
-- [ ] Integration with government databases
+Windows:
 
-## License
+```bash
+venv\Scripts\activate
+```
 
-Built for Smart India Hackathon - Agriculture / Animal Husbandry / AI
+Linux/macOS:
 
-## Support
+```bash
+source venv/bin/activate
+```
 
-For issues or questions, please refer to the project documentation or contact the development team.
+### Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## ▶ Running the Application
+
+```bash
+python app.py
+```
+
+Open:
+
+```text
+http://127.0.0.1:5000
+```
+
+---
+
+## 📈 Applications
+
+- Livestock Management
+- Breed Verification
+- Veterinary Assistance
+- Agricultural Research
+- Breed Conservation Programs
+- Educational Demonstrations
+
+---
+
+## 🌱 Future Enhancements
+
+- Multi-view Breed Recognition
+- Mobile Application Deployment
+- Offline Inference Support
+- RFID Integration
+- Livestock Tracking
+- Health & Disease Detection
+- Milk Yield Prediction
+- Real-time Video Classification
+- Multi-language Support
+
+---
+
+## 🎯 Performance Highlights
+
+- Lightweight MobileNetV2 Architecture
+- Fast Inference
+- Transfer Learning-Based Training
+- Optimized for Resource-Constrained Environments
+- Scalable Deployment Architecture
+
+---
+
+## 📜 License
+
+This project is intended for educational, research, and demonstration purposes.
+
+---
+
+## 👨‍💻 Maintainer
+
+**Harieaswar**
+
+AI • Computer Vision • Machine Learning
