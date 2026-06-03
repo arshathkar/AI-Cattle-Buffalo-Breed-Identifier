@@ -1,56 +1,43 @@
 # Python
 __pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-env/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual Environment
 venv/
-ENV/
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
+env/
 
-# Flask
-instance/
-.webassets-cache
-
-# Uploads
+# Uploaded images
 uploads/
-*.jpg
-*.jpeg
-*.png
-*.webp
 
-
-
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# OS junk
-.DS_Store
-Thumbs.db
+# Model checkpoints
+*.h5
+*.pth
+*.pt
+*.ckpt
 
 # Logs
 *.log
 
-# Environment variables
-.env
-.env.local
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Flask
+instance/
+
+# Temporary
+temp/
+cache/
+
+# Dataset
+breeds/
+Other/
+
+# Build files
+dist/
+build/
