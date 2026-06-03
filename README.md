@@ -1,132 +1,128 @@
-# 🐄 BovID
+# BovID
 
-### AI-Powered Cattle & Buffalo Breed Identification System
+## Deep Learning-Based Cattle and Buffalo Breed Identification
 
-BovID is a deep learning-powered web application that identifies Indian cattle and buffalo breeds from images using Computer Vision and Transfer Learning. The system provides breed classification, confidence scoring, breed information, and non-bovine image rejection through an efficient AI pipeline.
-
----
-
-## 📌 Overview
-
-Accurate breed identification is essential for livestock management, breeding programs, productivity analysis, and breed conservation. Traditional methods rely on manual inspection and domain expertise, making the process time-consuming and inconsistent.
-
-BovID automates breed identification using deep learning, enabling fast and reliable predictions from a single image.
+BovID is a computer vision application designed to identify Indian cattle and buffalo breeds from images using deep learning. The system combines transfer learning, image preprocessing, and breed-specific classification to deliver fast and reliable predictions while providing detailed breed information.
 
 ---
 
-## 🚀 Features
+## Overview
 
-- Image-based cattle and buffalo breed identification
-- Deep learning-powered classification
-- Non-bovine image rejection
-- Automatic image quality validation
-- Confidence-based predictions
-- Breed information retrieval
-- Cross-breed information generation
-- Lightweight and scalable architecture
+Accurate breed identification is essential for livestock management, productivity assessment, breeding programs, and conservation initiatives. Traditional identification methods often require expert knowledge and manual inspection, making the process time-consuming and difficult to scale.
+
+BovID addresses this challenge by leveraging modern deep learning techniques to automate breed recognition through image analysis.
 
 ---
 
-## 🧠 AI & Machine Learning
+## Features
 
-### Model Architecture
+* Image-based breed classification
+* Deep learning-powered inference
+* Breed metadata retrieval
+* Confidence-based prediction scoring
+* Automatic image validation
+* Non-bovine image filtering
+* Cross-breed information generation
+* Lightweight deployment architecture
 
-- MobileNetV2 (Transfer Learning)
-- Convolutional Neural Network (CNN)
-- Fine-tuned on livestock breed datasets
+---
 
-### Training Strategy
+## Machine Learning Approach
+
+### Transfer Learning
+
+The system utilizes MobileNetV2 as the backbone architecture. Pre-trained ImageNet weights are used to accelerate training and improve feature extraction capabilities.
+
+### Two-Phase Training Strategy
 
 #### Phase 1: Feature Extraction
 
-- Pre-trained MobileNetV2 backbone
-- Base layers frozen
-- Custom classification layers trained
-
-**Purpose:**
-- Preserve ImageNet features
-- Faster convergence
-- Reduced overfitting
+* MobileNetV2 base layers remain frozen
+* Custom classification layers are trained
+* Preserves learned visual representations
 
 #### Phase 2: Fine-Tuning
 
-- Upper layers unfrozen
-- Low learning rate training
-- Breed-specific adaptation
+* Upper layers of the backbone are unfrozen
+* Low learning rate optimization
+* Learns breed-specific visual characteristics
 
-**Purpose:**
-- Learn horn structures
-- Learn hump patterns
-- Learn coat textures
-- Improve breed-level classification accuracy
+This approach improves generalization while reducing overfitting.
 
 ---
 
-## 📊 Data Augmentation
+## Data Processing Pipeline
 
-To improve model generalization and reduce overfitting, the following augmentation techniques were applied:
+### Data Augmentation
 
-- Rotation
-- Translation
-- Zoom
-- Shear
-- Horizontal Flip
-- Brightness Adjustment
+Training images are augmented using:
+
+* Rotation
+* Translation
+* Zoom
+* Shearing
+* Horizontal Flipping
+* Brightness Variation
+
+These techniques increase dataset diversity and improve robustness.
+
+### Image Validation
+
+Uploaded images undergo:
+
+* Resolution verification
+* Brightness analysis
+* Automatic preprocessing
 
 ---
 
-## 🔍 Prediction Workflow
+## Prediction Workflow
 
 ```text
 Image Upload
-      │
-      ▼
+      ↓
 Image Validation
-      │
-      ▼
+      ↓
 Image Preprocessing
-      │
-      ▼
-Bovine Verification
-      │
-      ▼
+      ↓
+Subject Verification
+      ↓
 Breed Classification
-      │
-      ▼
-Confidence Scoring
-      │
-      ▼
-Breed Information Lookup
-      │
-      ▼
-Final Prediction
+      ↓
+Confidence Evaluation
+      ↓
+Breed Information Retrieval
 ```
 
 ---
 
-## 🛠 Technology Stack
-
-### Frontend
-- HTML5
-- CSS3
-- JavaScript
+## Technology Stack
 
 ### Backend
-- Flask
-- Python
 
-### AI / Machine Learning
-- TensorFlow
-- Keras
-- MobileNetV2
+* Python
+* Flask
+
+### Machine Learning
+
+* TensorFlow
+* Keras
+* MobileNetV2
 
 ### Image Processing
-- Pillow (PIL)
-- NumPy
+
+* Pillow
+* NumPy
+
+### Frontend
+
+* HTML5
+* CSS3
+* JavaScript
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```text
 BovID
@@ -135,112 +131,77 @@ BovID
 ├── train_model.py
 ├── augment_other.py
 ├── regen_class_indices.py
-│
-├── models/
-├── labels/
-│
 ├── requirements.txt
 ├── runtime.txt
 ├── README.md
-└── index.html
+│
+├── models/
+└── labels/
 ```
 
 ---
 
-## ⚙ Installation
+## Installation
 
-### Clone the Repository
+Clone the repository:
 
 ```bash
 git clone https://github.com/<username>/BovID.git
 cd BovID
 ```
 
-### Create Virtual Environment
+Create a virtual environment:
 
 ```bash
 python -m venv venv
 ```
 
-### Activate Environment
-
-Windows:
-
-```bash
-venv\Scripts\activate
-```
-
-Linux/macOS:
-
-```bash
-source venv/bin/activate
-```
-
-### Install Dependencies
+Activate the environment and install dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
----
-
-## ▶ Running the Application
+Run the application:
 
 ```bash
 python app.py
 ```
 
-Open:
+---
 
-```text
-http://127.0.0.1:5000
-```
+## Applications
+
+* Livestock Analytics
+* Breed Documentation
+* Veterinary Assistance
+* Agricultural Research
+* Conservation Programs
+* Educational Demonstrations
 
 ---
 
-## 📈 Applications
+## Future Development
 
-- Livestock Management
-- Breed Verification
-- Veterinary Assistance
-- Agricultural Research
-- Breed Conservation Programs
-- Educational Demonstrations
-
----
-
-## 🌱 Future Enhancements
-
-- Multi-view Breed Recognition
-- Mobile Application Deployment
-- Offline Inference Support
-- RFID Integration
-- Livestock Tracking
-- Health & Disease Detection
-- Milk Yield Prediction
-- Real-time Video Classification
-- Multi-language Support
+* Multi-view breed recognition
+* Mobile deployment
+* Offline inference support
+* RFID integration
+* Health and disease monitoring
+* Milk yield prediction
+* Real-time video analysis
+* Multilingual interface support
 
 ---
 
-## 🎯 Performance Highlights
+## License
 
-- Lightweight MobileNetV2 Architecture
-- Fast Inference
-- Transfer Learning-Based Training
-- Optimized for Resource-Constrained Environments
-- Scalable Deployment Architecture
+This repository is intended for educational, research, and demonstration purposes.
 
 ---
 
-## 📜 License
+## Author
 
-This project is intended for educational, research, and demonstration purposes.
+Arshath Rahamaan
 
----
-
-## 👨‍💻 Maintainer
-
-**Harieaswar**
-
-AI • Computer Vision • Machine Learning
+Artificial Intelligence • Computer Vision • Machine Learning
