@@ -41,3 +41,26 @@ Other/
 # Build files
 dist/
 build/
+
+# Dataset
+breeds/
+Other/
+
+# Videos
+*.mp4
+
+# Word files
+*.docx
+~$*
+
+# PowerPoint source files
+*.pptx
+
+# Python cache
+__pycache__/
+
+# Virtual environment
+venv/
+
+# Uploads
+uploads/
